@@ -20,7 +20,7 @@ const doc = {
                 "Player management endpoints. Player write requests validate request fields and ensure any provided guild_id points to an existing guild.",
         },
     ],
-    host: "cse341-project3.onrender.com",
+    host: "cse341-project3-lh49.onrender.com",
     schemes: ["https"],
 };
 
