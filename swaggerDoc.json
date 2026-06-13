@@ -5,8 +5,18 @@
     "description": "This API provides endpoints to manage guilds and players in the Elder Scrolls Online (ESO) game. It allows users to create, read, update, and delete guilds and players, as well as manage player memberships in guilds.",
     "version": "1.0.0"
   },
-  "host": "cse341-project3-lh49.onrender.com",
+  "host": "cse341-project3.onrender.com",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Guilds",
+      "description": "Guild management endpoints. Guild write requests enforce guild master ownership rules and keep player guild membership in sync."
+    },
+    {
+      "name": "Players",
+      "description": "Player management endpoints. Player write requests validate request fields and ensure any provided guild_id points to an existing guild."
+    }
+  ],
   "schemes": [
     "https"
   ],
@@ -16,7 +26,8 @@
         "tags": [
           "Guilds"
         ],
-        "description": "",
+        "summary": "Get all guilds",
+        "description": "Returns every guild in the collection.",
         "produces": [
           "application/json"
         ],
@@ -30,18 +41,24 @@
         "tags": [
           "Guilds"
         ],
-        "description": "",
+        "summary": "Create a guild",
+        "description": "Creates a new guild. Special rule: the guildMaster must be an existing player and cannot already be the guild master of another guild. On success, that player\\'s guild_id is synced to the new guild.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
+            "description": "Full guild payload. The guildMaster value must be a valid player ObjectId and that player can only be guild master of one guild at a time.",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
                   "example": "Covenant of Shadows"
+                },
+                "tag": {
+                  "type": "string",
+                  "example": "CoS"
                 },
                 "description": {
                   "type": "string",
@@ -53,7 +70,7 @@
                 },
                 "memberCount": {
                   "type": "number",
-                  "example": 10
+                  "example": 1
                 },
                 "createdAt": {
                   "type": "string",
@@ -120,7 +137,8 @@
         "tags": [
           "Guilds"
         ],
-        "description": "",
+        "summary": "Get a guild by id",
+        "description": "Returns a single guild by its MongoDB ObjectId.",
         "produces": [
           "application/json"
         ],
@@ -145,7 +163,8 @@
         "tags": [
           "Guilds"
         ],
-        "description": "",
+        "summary": "Replace a guild",
+        "description": "Replaces a guild document by id. All guild fields are required. If guildMaster changes, the previous guild master is cleared from this guild and the new guild master is synced. A player cannot become guild master of more than one guild.",
         "parameters": [
           {
             "name": "id",
@@ -157,12 +176,17 @@
             "name": "body",
             "in": "body",
             "required": true,
+            "description": "Complete replacement payload for a guild.",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
                   "example": "Nightfall Raiders"
+                },
+                "tag": {
+                  "type": "string",
+                  "example": "NR"
                 },
                 "description": {
                   "type": "string",
@@ -239,7 +263,8 @@
         "tags": [
           "Guilds"
         ],
-        "description": "",
+        "summary": "Update a guild",
+        "description": "Partially updates a guild by id. If guildMaster is provided, it must reference an existing player who is not already guild master of another guild. When changed, player guild_id values are synced automatically.",
         "parameters": [
           {
             "name": "id",
@@ -251,12 +276,17 @@
             "name": "body",
             "in": "body",
             "required": true,
+            "description": "Partial guild payload. Include only the fields you want to change.",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
                   "example": "Nightfall Raiders"
+                },
+                "tag": {
+                  "type": "string",
+                  "example": "NR"
                 },
                 "description": {
                   "type": "string",
@@ -333,7 +363,8 @@
         "tags": [
           "Guilds"
         ],
-        "description": "",
+        "summary": "Delete a guild",
+        "description": "Deletes a guild by id. Special rule: all players whose guild_id points to this guild are automatically cleared to null.",
         "parameters": [
           {
             "name": "id",
@@ -362,7 +393,8 @@
         "tags": [
           "Players"
         ],
-        "description": "",
+        "summary": "Get all players",
+        "description": "Returns every player in the collection.",
         "produces": [
           "application/json"
         ],
@@ -376,12 +408,14 @@
         "tags": [
           "Players"
         ],
-        "description": "",
+        "summary": "Create a player",
+        "description": "Creates a new player. If guild_id is provided, it must reference an existing guild.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
+            "description": "Full player payload. The stats field must be a plain object when provided.",
             "schema": {
               "type": "object",
               "properties": {
@@ -462,7 +496,8 @@
         "tags": [
           "Players"
         ],
-        "description": "",
+        "summary": "Get a player by id",
+        "description": "Returns a single player by its MongoDB ObjectId.",
         "produces": [
           "application/json"
         ],
@@ -487,7 +522,8 @@
         "tags": [
           "Players"
         ],
-        "description": "",
+        "summary": "Replace a player",
+        "description": "Replaces a player document by id. All player fields are expected. If guild_id is provided, it must reference an existing guild.",
         "parameters": [
           {
             "name": "id",
@@ -499,6 +535,7 @@
             "name": "body",
             "in": "body",
             "required": true,
+            "description": "Complete replacement payload for a player.",
             "schema": {
               "type": "object",
               "properties": {
@@ -577,7 +614,8 @@
         "tags": [
           "Players"
         ],
-        "description": "",
+        "summary": "Update a player",
+        "description": "Partially updates a player by id. If guild_id is included, it must reference an existing guild or be null to clear membership.",
         "parameters": [
           {
             "name": "id",
@@ -589,58 +627,10 @@
             "name": "body",
             "in": "body",
             "required": true,
+            "description": "Partial player payload. Include only the fields you want to change.",
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "type": "string",
-                  "example": "Molag Bal"
-                },
-                "displayName": {
-                  "type": "string",
-                  "example": "Molag Bal"
-                },
-                "level": {
-                  "type": "number",
-                  "example": 1
-                },
-                "championPoints": {
-                  "type": "number",
-                  "example": 0
-                },
-                "class": {
-                  "type": "string",
-                  "example": "Warrior"
-                },
-                "alliance": {
-                  "type": "string",
-                  "example": "Aldmeri Dominion"
-                },
-                "joinDate": {
-                  "type": "string",
-                  "example": "2024-01-01"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "Tank"
-                },
-                "achievements": {
-                  "type": "array",
-                  "example": [],
-                  "items": {}
-                },
-                "stats": {
-                  "type": "object",
-                  "properties": {}
-                },
-                "email": {
-                  "type": "string",
-                  "example": "molagbal@example.com"
-                },
-                "bio": {
-                  "type": "string",
-                  "example": "This is Molag Bal"
-                },
                 "guild_id": {
                   "type": "string",
                   "example": "607c191e810c19729de860ea"
@@ -667,7 +657,8 @@
         "tags": [
           "Players"
         ],
-        "description": "",
+        "summary": "Delete a player",
+        "description": "Deletes a player by id.",
         "parameters": [
           {
             "name": "id",

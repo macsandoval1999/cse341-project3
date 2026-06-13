@@ -20,7 +20,7 @@ const validateAllGuildFields = (req, res, next) => {
         recruitmentOpen: "required|boolean",
         language: "required|string",
         region: "required|string",
-        guildMaster: "required|ObjectId"
+        guildMaster: `required|${validationHelper.objectIdRule}`,
     };
     validationHelper.runValidation(req.body, validationRules, res, next);
 };
@@ -39,7 +39,7 @@ const validateUpdatedGuildFields = (req, res, next) => {
         recruitmentOpen: "boolean",
         language: "string",
         region: "string",
-        guildMaster: "ObjectId"
+        guildMaster: validationHelper.objectIdRule,
     };
     if (Object.keys(req.body || {}).length === 0) {
         res.status(400).send({
