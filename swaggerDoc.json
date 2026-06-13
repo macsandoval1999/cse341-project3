@@ -41,15 +41,15 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Alpha Centauri"
+                  "example": "Covenant of Shadows"
                 },
                 "description": {
                   "type": "string",
-                  "example": "A nearby star system"
+                  "example": "A guild focused on PvP content"
                 },
                 "alliance": {
                   "type": "string",
-                  "example": "Alliance1"
+                  "example": "Aldmeri Dominion"
                 },
                 "memberCount": {
                   "type": "number",
@@ -170,7 +170,7 @@
                 },
                 "alliance": {
                   "type": "string",
-                  "example": "Alliance2"
+                  "example": "Daggerfall Covenant"
                 },
                 "memberCount": {
                   "type": "number",
@@ -264,7 +264,7 @@
                 },
                 "alliance": {
                   "type": "string",
-                  "example": "Alliance2"
+                  "example": "Daggerfall Covenant"
                 },
                 "memberCount": {
                   "type": "number",
@@ -387,11 +387,11 @@
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "Player1"
+                  "example": "Molag Bal"
                 },
                 "displayName": {
                   "type": "string",
-                  "example": "Player One"
+                  "example": "Molag Bal"
                 },
                 "level": {
                   "type": "number",
@@ -407,7 +407,7 @@
                 },
                 "alliance": {
                   "type": "string",
-                  "example": "Alliance1"
+                  "example": "Aldmeri Dominion"
                 },
                 "joinDate": {
                   "type": "string",
@@ -428,11 +428,11 @@
                 },
                 "email": {
                   "type": "string",
-                  "example": "player1@example.com"
+                  "example": "molagbal@example.com"
                 },
                 "bio": {
                   "type": "string",
-                  "example": "This is Player One"
+                  "example": "This is Molag Bal"
                 },
                 "guild_id": {
                   "type": "string",
@@ -504,11 +504,11 @@
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "Player1"
+                  "example": "Molag Bal"
                 },
                 "displayName": {
                   "type": "string",
-                  "example": "Player One"
+                  "example": "Molag Bal"
                 },
                 "level": {
                   "type": "number",
@@ -524,7 +524,7 @@
                 },
                 "alliance": {
                   "type": "string",
-                  "example": "Alliance1"
+                  "example": "Aldmeri Dominion"
                 },
                 "joinDate": {
                   "type": "string",
@@ -545,11 +545,11 @@
                 },
                 "email": {
                   "type": "string",
-                  "example": "player1@example.com"
+                  "example": "molagbal@example.com"
                 },
                 "bio": {
                   "type": "string",
-                  "example": "This is Player One"
+                  "example": "This is Molag Bal"
                 },
                 "guild_id": {
                   "type": "string",
@@ -594,11 +594,11 @@
               "properties": {
                 "username": {
                   "type": "string",
-                  "example": "Player1"
+                  "example": "Molag Bal"
                 },
                 "displayName": {
                   "type": "string",
-                  "example": "Player One"
+                  "example": "Molag Bal"
                 },
                 "level": {
                   "type": "number",
@@ -614,7 +614,7 @@
                 },
                 "alliance": {
                   "type": "string",
-                  "example": "Alliance1"
+                  "example": "Aldmeri Dominion"
                 },
                 "joinDate": {
                   "type": "string",
@@ -635,11 +635,11 @@
                 },
                 "email": {
                   "type": "string",
-                  "example": "player1@example.com"
+                  "example": "molagbal@example.com"
                 },
                 "bio": {
                   "type": "string",
-                  "example": "This is Player One"
+                  "example": "This is Molag Bal"
                 },
                 "guild_id": {
                   "type": "string",
