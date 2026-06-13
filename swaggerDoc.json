@@ -1,26 +1,16 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "CSE341 Project 2 API: ESO Guilds API",
+    "title": "CSE341 Project 3 API: ESO Guilds API",
     "description": "This API provides endpoints to manage guilds and players in the Elder Scrolls Online (ESO) game. It allows users to create, read, update, and delete guilds and players, as well as manage player memberships in guilds.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-project3-lh49.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/guilds/": {
       "get": {
         "tags": [
