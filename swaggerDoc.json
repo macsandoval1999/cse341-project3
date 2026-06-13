@@ -1,0 +1,705 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CSE341 Project 2 API: ESO Guilds API",
+    "description": "This API provides endpoints to manage guilds and players in the Elder Scrolls Online (ESO) game. It allows users to create, read, update, and delete guilds and players, as well as manage player memberships in guilds.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/guilds/": {
+      "get": {
+        "tags": [
+          "Guilds"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Guilds"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Alpha Centauri"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A nearby star system"
+                },
+                "alliance": {
+                  "type": "string",
+                  "example": "Alliance1"
+                },
+                "memberCount": {
+                  "type": "number",
+                  "example": 10
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2024-01-01"
+                },
+                "activities": {
+                  "type": "array",
+                  "example": [
+                    "Raid",
+                    "Dungeon"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ranks": {
+                  "type": "array",
+                  "example": [
+                    "Guild Master",
+                    "Officer",
+                    "Member"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "recruitmentOpen": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "language": {
+                  "type": "string",
+                  "example": "English"
+                },
+                "region": {
+                  "type": "string",
+                  "example": "NA"
+                },
+                "guildMaster": {
+                  "type": "string",
+                  "example": "607c191e810c19729de860ea"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      }
+    },
+    "/guilds/{id}": {
+      "get": {
+        "tags": [
+          "Guilds"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Guilds"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Nightfall Raiders"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A guild focused on endgame content"
+                },
+                "alliance": {
+                  "type": "string",
+                  "example": "Alliance2"
+                },
+                "memberCount": {
+                  "type": "number",
+                  "example": 20
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2024-02-01"
+                },
+                "activities": {
+                  "type": "array",
+                  "example": [
+                    "Raid",
+                    "PvP"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ranks": {
+                  "type": "array",
+                  "example": [
+                    "Guild Master",
+                    "Officer",
+                    "Member"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "recruitmentOpen": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "language": {
+                  "type": "string",
+                  "example": "English"
+                },
+                "region": {
+                  "type": "string",
+                  "example": "EU"
+                },
+                "guildMaster": {
+                  "type": "string",
+                  "example": "607c191e810c19729de860eb"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Guilds"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Nightfall Raiders"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A guild focused on endgame content"
+                },
+                "alliance": {
+                  "type": "string",
+                  "example": "Alliance2"
+                },
+                "memberCount": {
+                  "type": "number",
+                  "example": 20
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2024-02-01"
+                },
+                "activities": {
+                  "type": "array",
+                  "example": [
+                    "Raid",
+                    "PvP"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "ranks": {
+                  "type": "array",
+                  "example": [
+                    "Guild Master",
+                    "Officer",
+                    "Member"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "recruitmentOpen": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "language": {
+                  "type": "string",
+                  "example": "English"
+                },
+                "region": {
+                  "type": "string",
+                  "example": "EU"
+                },
+                "guildMaster": {
+                  "type": "string",
+                  "example": "607c191e810c19729de860eb"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Guilds"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      }
+    },
+    "/players/": {
+      "get": {
+        "tags": [
+          "Players"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Players"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Player1"
+                },
+                "displayName": {
+                  "type": "string",
+                  "example": "Player One"
+                },
+                "level": {
+                  "type": "number",
+                  "example": 1
+                },
+                "championPoints": {
+                  "type": "number",
+                  "example": 0
+                },
+                "class": {
+                  "type": "string",
+                  "example": "Warrior"
+                },
+                "alliance": {
+                  "type": "string",
+                  "example": "Alliance1"
+                },
+                "joinDate": {
+                  "type": "string",
+                  "example": "2024-01-01"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "Tank"
+                },
+                "achievements": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "stats": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "email": {
+                  "type": "string",
+                  "example": "player1@example.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "This is Player One"
+                },
+                "guild_id": {
+                  "type": "string",
+                  "example": "607c191e810c19729de860ea"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "tags": [
+          "Players"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Players"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Player1"
+                },
+                "displayName": {
+                  "type": "string",
+                  "example": "Player One"
+                },
+                "level": {
+                  "type": "number",
+                  "example": 1
+                },
+                "championPoints": {
+                  "type": "number",
+                  "example": 0
+                },
+                "class": {
+                  "type": "string",
+                  "example": "Warrior"
+                },
+                "alliance": {
+                  "type": "string",
+                  "example": "Alliance1"
+                },
+                "joinDate": {
+                  "type": "string",
+                  "example": "2024-01-01"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "Tank"
+                },
+                "achievements": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "stats": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "email": {
+                  "type": "string",
+                  "example": "player1@example.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "This is Player One"
+                },
+                "guild_id": {
+                  "type": "string",
+                  "example": "607c191e810c19729de860ea"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Players"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Player1"
+                },
+                "displayName": {
+                  "type": "string",
+                  "example": "Player One"
+                },
+                "level": {
+                  "type": "number",
+                  "example": 1
+                },
+                "championPoints": {
+                  "type": "number",
+                  "example": 0
+                },
+                "class": {
+                  "type": "string",
+                  "example": "Warrior"
+                },
+                "alliance": {
+                  "type": "string",
+                  "example": "Alliance1"
+                },
+                "joinDate": {
+                  "type": "string",
+                  "example": "2024-01-01"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "Tank"
+                },
+                "achievements": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "stats": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "email": {
+                  "type": "string",
+                  "example": "player1@example.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "This is Player One"
+                },
+                "guild_id": {
+                  "type": "string",
+                  "example": "607c191e810c19729de860ea"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Players"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "sessionAuth": []
+          }
+        ]
+      }
+    }
+  }
+}

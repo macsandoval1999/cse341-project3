@@ -1,0 +1,38 @@
+{
+    "name": "cse341-project3",
+    "version": "1.0.0",
+    "description": "Project 3",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "doc": "node swagger.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/macsandoval1999/cse341-project3.git"
+    },
+    "keywords": [],
+    "author": "Marco Sandoval",
+    "license": "ISC",
+    "type": "commonjs",
+    "homepage": "https://github.com/macsandoval1999/cse341-project3",
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    },
+    "dependencies": {
+        "bcryptjs": "^3.0.3",
+        "body-parser": "^2.2.2",
+        "cors": "^2.8.6",
+        "dotenv": "^17.4.2",
+        "express": "^5.2.1",
+        "express-session": "^1.19.0",
+        "mongodb": "^7.3.0",
+        "passport": "^0.7.0",
+        "passport-github2": "^0.1.12",
+        "swagger-autogen": "^2.23.7",
+        "swagger-ui-express": "^5.0.1",
+        "validatorjs": "^3.22.1"
+    }
+}
