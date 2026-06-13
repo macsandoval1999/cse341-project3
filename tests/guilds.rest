@@ -1,0 +1,86 @@
+@baseUrl = http://localhost:3000
+@guildId = 
+@guildMasterId = 
+
+### Get all guilds
+GET {{baseUrl}}/guilds
+
+### Get guild by id
+GET {{baseUrl}}/guilds/{{guildId}}
+
+### Create guild
+POST {{baseUrl}}/guilds
+Content-Type: application/json
+
+{
+  "name": "REST Test Guild",
+  "tag": "RTG",
+  "alliance": "Ebonheart Pact",
+  "memberCount": 12,
+  "createdAt": "2026-06-13",
+  "description": "Guild request for REST Client verification",
+  "activities": ["Trials", "Dungeons"],
+  "ranks": ["Guild Master", "Officer", "Member"],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": "{{guildMasterId}}"
+}
+
+### Replace guild
+PUT {{baseUrl}}/guilds/{{guildId}}
+Content-Type: application/json
+
+{
+  "name": "REST Test Guild Updated",
+  "tag": "RTG",
+  "alliance": "Ebonheart Pact",
+  "memberCount": 14,
+  "createdAt": "2026-06-13",
+  "description": "Updated guild request for REST Client verification",
+  "activities": ["Trials", "Dungeons", "PvP"],
+  "ranks": ["Guild Master", "Officer", "Member"],
+  "recruitmentOpen": false,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": "{{guildMasterId}}"
+}
+
+### Update guild
+PATCH {{baseUrl}}/guilds/{{guildId}}
+Content-Type: application/json
+
+{
+  "memberCount": 15,
+  "recruitmentOpen": true
+}
+
+### Reject duplicate guild master on create
+POST {{baseUrl}}/guilds
+Content-Type: application/json
+
+{
+  "name": "REST Duplicate Guild Master",
+  "tag": "RDX",
+  "alliance": "Ebonheart Pact",
+  "memberCount": 5,
+  "createdAt": "2026-06-13",
+  "description": "Should fail if guildMaster already runs another guild",
+  "activities": ["Trials"],
+  "ranks": ["Guild Master", "Member"],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": "{{guildMasterId}}"
+}
+
+### Reject duplicate guild master on patch
+PATCH {{baseUrl}}/guilds/{{guildId}}
+Content-Type: application/json
+
+{
+  "guildMaster": "{{guildMasterId}}"
+}
+
+### Delete guild
+DELETE {{baseUrl}}/guilds/{{guildId}}

@@ -1,0 +1,69 @@
+@baseUrl = http://localhost:3000
+@playerId = 
+@guildId = 
+
+### Get all players
+GET {{baseUrl}}/players
+
+### Get player by id
+GET {{baseUrl}}/players/{{playerId}}
+
+### Create player
+POST {{baseUrl}}/players
+Content-Type: application/json
+
+{
+  "username": "rest-player",
+  "displayName": "REST Player",
+  "level": 22,
+  "championPoints": 5,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": "2026-06-13",
+  "role": "Healer",
+  "achievements": [],
+  "stats": {},
+  "email": "rest-player@example.com",
+  "bio": "Player request for REST Client verification",
+  "guild_id": "{{guildId}}"
+}
+
+### Replace player
+PUT {{baseUrl}}/players/{{playerId}}
+Content-Type: application/json
+
+{
+  "username": "rest-player-updated",
+  "displayName": "REST Player Updated",
+  "level": 24,
+  "championPoints": 8,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": "2026-06-13",
+  "role": "Healer",
+  "achievements": ["Verified"],
+  "stats": { "runs": 1 },
+  "email": "rest-player@example.com",
+  "bio": "Updated player request for REST Client verification",
+  "guild_id": "{{guildId}}"
+}
+
+### Update player
+PATCH {{baseUrl}}/players/{{playerId}}
+Content-Type: application/json
+
+{
+  "level": 25,
+  "championPoints": 9
+}
+
+### Clear player guild
+PATCH {{baseUrl}}/players/{{playerId}}
+Content-Type: application/json
+
+{
+  "guild_id": null
+}
+
+### Delete player
+DELETE {{baseUrl}}/players/{{playerId}}
