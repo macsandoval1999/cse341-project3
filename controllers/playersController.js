@@ -70,8 +70,7 @@ playersController.createPlayer = async (req, res) => {
             achievements: [],
             stats: {},
             email: 'molagbal@example.com',
-            bio: 'This is Molag Bal',
-            guild_id: '607c191e810c19729de860ea'
+            bio: 'This is Molag Bal'
         }
     } */
     try {

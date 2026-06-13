@@ -467,10 +467,6 @@
                 "bio": {
                   "type": "string",
                   "example": "This is Molag Bal"
-                },
-                "guild_id": {
-                  "type": "string",
-                  "example": "607c191e810c19729de860ea"
                 }
               }
             }
