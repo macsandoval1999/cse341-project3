@@ -79,18 +79,18 @@ playersController.createPlayer = async (req, res) => {
         in: 'body',
         required: true,
         schema: {
-            username: 'Player1',
-            displayName: 'Player One',
+            username: 'Molag Bal',
+            displayName: 'Molag Bal',
             level: 1,
             championPoints: 0,
             class: 'Warrior',
-            alliance: 'Alliance1',
+            alliance: 'Aldmeri Dominion',
             joinDate: '2024-01-01',
             role: 'Tank',
             achievements: [],
             stats: {},
-            email: 'player1@example.com',
-            bio: 'This is Player One',
+            email: 'molagbal@example.com',
+            bio: 'This is Molag Bal',
             guild_id: '607c191e810c19729de860ea'
         }
     } */
@@ -121,18 +121,18 @@ playersController.replacePlayer = async (req, res) => {
         in: 'body',
         required: true,
         schema: {
-            username: 'Player1',
-            displayName: 'Player One',
+            username: 'Molag Bal',
+            displayName: 'Molag Bal',
             level: 1,
             championPoints: 0,
             class: 'Warrior',
-            alliance: 'Alliance1',
+            alliance: 'Aldmeri Dominion',
             joinDate: '2024-01-01',
             role: 'Tank',
             achievements: [],
             stats: {},
-            email: 'player1@example.com',
-            bio: 'This is Player One',
+            email: 'molagbal@example.com',
+            bio: 'This is Molag Bal',
             guild_id: '607c191e810c19729de860ea'
         }
     } */
@@ -164,18 +164,18 @@ playersController.updatePlayer = async (req, res) => {
         in: 'body',
         required: true,
         schema: {
-            username: 'Player1',
-            displayName: 'Player One',
+            username: 'Molag Bal',
+            displayName: 'Molag Bal',
             level: 1,
             championPoints: 0,
             class: 'Warrior',
-            alliance: 'Alliance1',
+            alliance: 'Aldmeri Dominion',
             joinDate: '2024-01-01',
             role: 'Tank',
             achievements: [],
             stats: {},
-            email: 'player1@example.com',
-            bio: 'This is Player One',
+            email: 'molagbal@example.com',
+            bio: 'This is Molag Bal',
             guild_id: '607c191e810c19729de860ea'
         }
     } */

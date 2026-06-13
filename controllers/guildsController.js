@@ -77,9 +77,9 @@ guildsController.createGuild = async (req, res) => {
         in: 'body',
         required: true,
         schema: {
-            name: 'Alpha Centauri',
-            description: 'A nearby star system',
-            alliance: 'Alliance1',
+            name: 'Covenant of Shadows',
+            description: 'A guild focused on PvP content',
+            alliance: 'Aldmeri Dominion',
             memberCount: 10,
             createdAt: '2024-01-01',
             activities: ['Raid', 'Dungeon'],
@@ -121,7 +121,7 @@ guildsController.replaceGuild = async (req, res) => {
         schema: {
             name: 'Nightfall Raiders',
             description: 'A guild focused on endgame content',
-            alliance: 'Alliance2',
+            alliance: 'Daggerfall Covenant',
             memberCount: 20,
             createdAt: '2024-02-01',
             activities: ['Raid', 'PvP'],
@@ -162,7 +162,7 @@ guildsController.updateGuild = async (req, res) => {
         schema: {
             name: 'Nightfall Raiders',
             description: 'A guild focused on endgame content',
-            alliance: 'Alliance2',
+            alliance: 'Daggerfall Covenant',
             memberCount: 20,
             createdAt: '2024-02-01',
             activities: ['Raid', 'PvP'],
