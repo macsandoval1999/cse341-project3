@@ -1,0 +1,78 @@
+@baseUrl = http://localhost:3000
+@guildStoreListingId = 
+@sellerGuildId = 6a2d472d3a3dbc93afc19bfd
+@ownerPlayerId = 6a2d46643a3dbc93afc19bfc 
+
+### Get all guild store listings
+GET {{baseUrl}}/guildStoreListings
+
+### Get guild store listing by id
+GET {{baseUrl}}/guildStoreListings/{{guildStoreListingId}}
+
+### Create guild store listing
+POST {{baseUrl}}/guildStoreListings
+Content-Type: application/json
+
+{
+  "itemName": "REST Store Listing",
+  "itemType": "Weapon",
+  "subType": "Inferno Staff",
+  "quality": "Epic",
+  "priceGold": 12500,
+  "quantity": 1,
+  "sellerGuild_id": "{{sellerGuildId}}",
+  "ownerPlayer_id": "{{ownerPlayerId}}",
+  "listedAt": "2026-06-16T12:00:00.000Z",
+  "description": "Guild store request for REST Client verification",
+  "levelRequirement": 50,
+  "traits": ["Infused"],
+  "enchantments": ["Flame Damage"],
+  "sellerNotes": "Created for REST Client verification"
+}
+
+### Replace guild store listing
+PUT {{baseUrl}}/guildStoreListings/{{guildStoreListingId}}
+Content-Type: application/json
+
+{
+  "itemName": "REST Store Listing Updated",
+  "itemType": "Armor",
+  "subType": "Chest",
+  "quality": "Legendary",
+  "priceGold": 18000,
+  "quantity": 1,
+  "sellerGuild_id": "{{sellerGuildId}}",
+  "ownerPlayer_id": "{{ownerPlayerId}}",
+  "listedAt": "2026-06-16T12:00:00.000Z",
+  "description": "Updated guild store request for REST Client verification",
+  "levelRequirement": 50,
+  "traits": ["Divines"],
+  "enchantments": ["Max Magicka"],
+  "sellerNotes": "Updated for REST Client verification"
+}
+
+### Update guild store listing
+PATCH {{baseUrl}}/guildStoreListings/{{guildStoreListingId}}
+Content-Type: application/json
+
+{
+  "priceGold": 16000,
+  "sellerNotes": "Patched guild store listing",
+  "quality": "Legendary"
+}
+
+### Reject invalid owner player
+POST {{baseUrl}}/guildStoreListings
+Content-Type: application/json
+
+{
+  "itemName": "REST Invalid Store Listing",
+  "itemType": "Consumable",
+  "priceGold": 100,
+  "quantity": 5,
+  "ownerPlayer_id": "507f1f77bcf86cd799439011",
+  "sellerGuild_id": "{{sellerGuildId}}"
+}
+
+### Delete guild store listing
+DELETE {{baseUrl}}/guildStoreListings/{{guildStoreListingId}}

@@ -1,0 +1,228 @@
+[{
+  "_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  },
+  "name": "Shadowed Watch",
+  "tag": "SHW",
+  "alliance": "Aldmeri Dominion",
+  "memberCount": 82,
+  "createdAt": {
+    "$date": "2020-09-01T18:30:00.000Z"
+  },
+  "description": "PvP-focused guild that runs campaigns and arenas.",
+  "activities": [
+    "Cyrodiil",
+    "Smallscale PvP",
+    "BGs"
+  ],
+  "ranks": [
+    "Leader",
+    "Commander",
+    "Soldier",
+    "Recruit"
+  ],
+  "recruitmentOpen": false,
+  "language": "English",
+  "region": "EU",
+  "guildMaster_id": {
+    "$oid": "6a2a396afba268ea258ee3d9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  },
+  "name": "Lorekeepers of Tamriel",
+  "tag": "LKT",
+  "alliance": "Daggerfall Covenant",
+  "memberCount": 45,
+  "createdAt": {
+    "$date": "2016-01-22T09:15:00.000Z"
+  },
+  "description": "Social guild for roleplayers and lore discussions.",
+  "activities": [
+    "RP events",
+    "Storytelling",
+    "Crafting circles"
+  ],
+  "ranks": [
+    "High Keeper",
+    "Keeper",
+    "Scribe",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster_id": {
+    "$oid": "6a2a396afba268ea258ee3de"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  },
+  "name": "Iron Vanguard",
+  "tag": "IVG",
+  "alliance": "Ebonheart Pact",
+  "memberCount": 200,
+  "createdAt": {
+    "$date": "2015-11-05T20:00:00.000Z"
+  },
+  "description": "Large guild running weekly raid progression and training.",
+  "activities": [
+    "Raids",
+    "Trials",
+    "Training"
+  ],
+  "ranks": [
+    "Commander",
+    "Officer",
+    "Raider",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster_id": {
+    "$oid": "6a2a396afba268ea258ee3e3"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d17557e85dbb50f831140"
+  },
+  "name": "Northwatch Sentinels",
+  "tag": "NWS",
+  "description": "Trial and dungeon progression guild.",
+  "alliance": "Ebonheart Pact",
+  "memberCount": 24,
+  "createdAt": {
+    "$date": "2026-06-13T00:00:00.000Z"
+  },
+  "activities": [
+    "Trials",
+    "Veteran Dungeons"
+  ],
+  "ranks": [
+    "Guild Master",
+    "Officer",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster_id": {
+    "$oid": "6a2a396afba268ea258ee3d5"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d379b317edf522184c6e9"
+  },
+  "name": "Covenant of Shadows",
+  "tag": "CoS",
+  "description": "A guild focused on PvP content",
+  "alliance": "Aldmeri Dominion",
+  "memberCount": 10,
+  "createdAt": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "activities": [
+    "Raid",
+    "Dungeon"
+  ],
+  "ranks": [
+    "Guild Master",
+    "Officer",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": {
+    "$oid": "6a2d2520c1c3e1ed2993f653"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d3b3fd73a7df1e26fbe37"
+  },
+  "name": "Covenant of Shadows",
+  "tag": "CoS",
+  "description": "A guild focused on PvP content",
+  "alliance": "Aldmeri Dominion",
+  "memberCount": 10,
+  "createdAt": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "activities": [
+    "Raid",
+    "Dungeon"
+  ],
+  "ranks": [
+    "Guild Master",
+    "Officer",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": {
+    "$oid": "6a2d3b15d73a7df1e26fbe36"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d3be6b02ccb0590bb34d9"
+  },
+  "name": "Covenant of Shadows",
+  "tag": "CoS",
+  "description": "A guild focused on PvP content",
+  "alliance": "Aldmeri Dominion",
+  "memberCount": 1,
+  "createdAt": null,
+  "activities": [
+    "Raid",
+    "Dungeon"
+  ],
+  "ranks": [
+    "Guild Master",
+    "Officer",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": {
+    "$oid": "6a2d39d10c6877de290f43a0"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d472d3a3dbc93afc19bfd"
+  },
+  "name": "Covenant of Shadows",
+  "tag": "CoS",
+  "description": "A guild focused on PvP content",
+  "alliance": "Aldmeri Dominion",
+  "memberCount": 1,
+  "createdAt": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "activities": [
+    "Raid",
+    "Dungeon"
+  ],
+  "ranks": [
+    "Guild Master",
+    "Officer",
+    "Member"
+  ],
+  "recruitmentOpen": true,
+  "language": "English",
+  "region": "NA",
+  "guildMaster": {
+    "$oid": "6a2d46643a3dbc93afc19bfc"
+  }
+}]

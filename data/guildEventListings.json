@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "6a31f6b71b27e65fa358a059"
+  },
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  },
+  "name": "Nightfall Raid",
+  "description": "Endgame trial for veteran players.",
+  "eventDate": {
+    "$date": "2025-07-01T20:00:00.000Z"
+  },
+  "durationMinutes": 180,
+  "eventType": "Raid",
+  "organizer": {
+    "$oid": "6a2a396afba268ea258ee3e2"
+  },
+  "attendees": [
+    "6a2a396afba268ea258ee3e2",
+    "6a2a396afba268ea258ee3e1",
+    "6a2a396afba268ea258ee3e0"
+  ],
+  "requirements": {
+    "minLevel": 50,
+    "minChampionPoints": 1600,
+    "rolesNeeded": [
+      "Healer",
+      "Tank"
+    ]
+  },
+  "recurring": false,
+  "createdAt": {
+    "$date": "2025-06-15T12:00:00.000Z"
+  },
+  "recurrencePattern": "",
+  "recurrenceDays": []
+},
+{
+  "_id": {
+    "$oid": "6a31f6b71b27e65fa358a05a"
+  },
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  },
+  "name": "Weekly Dungeon Night",
+  "description": "Casual group for veteran dungeons.",
+  "eventDate": {
+    "$date": "2025-07-03T19:30:00.000Z"
+  },
+  "durationMinutes": 120,
+  "eventType": "Dungeon",
+  "organizer": {
+    "$oid": "6a2a3932fba268ea258ee3ec"
+  },
+  "attendees": [
+    "6a2a3932fba268ea258ee3ec"
+  ],
+  "requirements": {
+    "minLevel": 50
+  },
+  "recurring": true,
+  "recurrencePattern": "weekly",
+  "recurrenceDays": [
+    "Thursday"
+  ],
+  "createdAt": {
+    "$date": "2025-06-15T12:05:00.000Z"
+  }
+}]
