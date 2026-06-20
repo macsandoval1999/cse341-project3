@@ -4,6 +4,7 @@
     "description": "Project 3",
     "main": "app.js",
     "scripts": {
+        "test": "node --test",
         "start": "node app.js",
         "dev": "nodemon app.js",
         "doc": "node swagger.js"
