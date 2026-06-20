@@ -1,682 +1,1362 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "CSE341 Project 3 API: ESO Guilds API",
-    "description": "This API provides endpoints to manage guilds and players in the Elder Scrolls Online (ESO) game. It allows users to create, read, update, and delete guilds and players, as well as manage player memberships in guilds.",
-    "version": "1.0.0"
-  },
-  "host": "cse341-project3-lh49.onrender.com",
-  "basePath": "/",
-  "tags": [
-    {
-      "name": "Guilds",
-      "description": "Guild management endpoints. Guild write requests enforce guild master ownership rules and keep player guild membership in sync."
+    "swagger": "2.0",
+    "info": {
+        "title": "CSE341 Project 3 API: ESO Guilds API",
+        "description": "This API provides endpoints to manage guilds and players in the Elder Scrolls Online (ESO) game. It allows users to create, read, update, and delete guilds and players, as well as manage player memberships in guilds.",
+        "version": "1.0.0"
     },
-    {
-      "name": "Players",
-      "description": "Player management endpoints. Player write requests validate request fields and ensure any provided guild_id points to an existing guild."
+    "host": "cse341-project3-lh49.onrender.com",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Guilds",
+            "description": "Guild management endpoints. Allows creating, updating, and managing guilds. Write requests validate that guild tags are unique and that guild memberships reference existing players."
+        },
+        {
+            "name": "Players",
+            "description": "Player management endpoints. Allows creating, updating, and managing player profiles. Write requests validate that guild memberships reference existing guilds and enforce that players can only be members of one guild at a time."
+        },
+        {
+            "name": "Guild Event Listings",
+            "description": "Guild event listing management endpoints. Allows creating, updating, and managing guild events such as raids, dungeons, and trials. Write requests validate that organizers and attendees are existing players and that guild_id references an existing guild."
+        },
+        {
+            "name": "Guild Store Listings",
+            "description": "Guild store listing management endpoints. Allows creating, updating, and managing items for sale in guild stores. Write requests validate that ownerPlayer_id references an existing player and that sellerGuild_id references an existing guild."
+        }
+    ],
+    "schemes": ["https"],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": ["Auth"],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "stargazer"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "stargazer@example.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "super-secret-password"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["Auth"],
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "stargazer@example.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "super-secret-password"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "tags": ["Auth"],
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/guilds/": {
+            "get": {
+                "tags": ["Guilds"],
+                "summary": "Get all guilds",
+                "description": "Returns every guild in the collection.",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Guilds"],
+                "summary": "Create a guild",
+                "description": "Creates a new guild. Special rule: the guildMaster must be an existing player and cannot already be the guild master of another guild. On success, that player\\'s guild_id is synced to the new guild.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Full guild payload. The guildMaster value must be a valid player ObjectId and that player can only be guild master of one guild at a time.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Covenant of Shadows"
+                                },
+                                "tag": {
+                                    "type": "string",
+                                    "example": "CoS"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "A guild focused on PvP content"
+                                },
+                                "alliance": {
+                                    "type": "string",
+                                    "example": "Aldmeri Dominion"
+                                },
+                                "memberCount": {
+                                    "type": "number",
+                                    "example": 1
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "example": "2024-01-01"
+                                },
+                                "activities": {
+                                    "type": "array",
+                                    "example": ["Raid", "Dungeon"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "ranks": {
+                                    "type": "array",
+                                    "example": [
+                                        "Guild Master",
+                                        "Officer",
+                                        "Member"
+                                    ],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "recruitmentOpen": {
+                                    "type": "boolean",
+                                    "example": true
+                                },
+                                "language": {
+                                    "type": "string",
+                                    "example": "English"
+                                },
+                                "region": {
+                                    "type": "string",
+                                    "example": "NA"
+                                },
+                                "guildMaster": {
+                                    "type": "string",
+                                    "example": "607c191e810c19729de860ea"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            }
+        },
+        "/guilds/{id}": {
+            "get": {
+                "tags": ["Guilds"],
+                "summary": "Get a guild by id",
+                "description": "Returns a single guild by its MongoDB ObjectId.",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Guilds"],
+                "summary": "Replace a guild",
+                "description": "Replaces a guild document by id. All guild fields are required. If guildMaster changes, the previous guild master is cleared from this guild and the new guild master is synced. A player cannot become guild master of more than one guild.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Complete replacement payload for a guild.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Nightfall Raiders"
+                                },
+                                "tag": {
+                                    "type": "string",
+                                    "example": "NR"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "A guild focused on endgame content"
+                                },
+                                "alliance": {
+                                    "type": "string",
+                                    "example": "Daggerfall Covenant"
+                                },
+                                "memberCount": {
+                                    "type": "number",
+                                    "example": 20
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "example": "2024-02-01"
+                                },
+                                "activities": {
+                                    "type": "array",
+                                    "example": ["Raid", "PvP"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "ranks": {
+                                    "type": "array",
+                                    "example": [
+                                        "Guild Master",
+                                        "Officer",
+                                        "Member"
+                                    ],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "recruitmentOpen": {
+                                    "type": "boolean",
+                                    "example": false
+                                },
+                                "language": {
+                                    "type": "string",
+                                    "example": "English"
+                                },
+                                "region": {
+                                    "type": "string",
+                                    "example": "EU"
+                                },
+                                "guildMaster": {
+                                    "type": "string",
+                                    "example": "607c191e810c19729de860eb"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": ["Guilds"],
+                "summary": "Update a guild",
+                "description": "Partially updates a guild by id. If guildMaster is provided, it must reference an existing player who is not already guild master of another guild. When changed, player guild_id values are synced automatically.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Partial guild payload. Include only the fields you want to change.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Nightfall Raiders"
+                                },
+                                "tag": {
+                                    "type": "string",
+                                    "example": "NR"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "A guild focused on endgame content"
+                                },
+                                "alliance": {
+                                    "type": "string",
+                                    "example": "Daggerfall Covenant"
+                                },
+                                "memberCount": {
+                                    "type": "number",
+                                    "example": 20
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "example": "2024-02-01"
+                                },
+                                "activities": {
+                                    "type": "array",
+                                    "example": ["Raid", "PvP"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "ranks": {
+                                    "type": "array",
+                                    "example": [
+                                        "Guild Master",
+                                        "Officer",
+                                        "Member"
+                                    ],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "recruitmentOpen": {
+                                    "type": "boolean",
+                                    "example": false
+                                },
+                                "language": {
+                                    "type": "string",
+                                    "example": "English"
+                                },
+                                "region": {
+                                    "type": "string",
+                                    "example": "EU"
+                                },
+                                "guildMaster": {
+                                    "type": "string",
+                                    "example": "607c191e810c19729de860eb"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": ["Guilds"],
+                "summary": "Delete a guild",
+                "description": "Deletes a guild by id. Special rule: all players whose guild_id points to this guild are automatically cleared to null.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            }
+        },
+        "/players/": {
+            "get": {
+                "tags": ["Players"],
+                "summary": "Get all players",
+                "description": "Returns every player in the collection.",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Players"],
+                "summary": "Create a player",
+                "description": "Creates a new player. If guild_id is provided, it must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Full player payload. The stats field must be a plain object when provided.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "Molag Bal"
+                                },
+                                "displayName": {
+                                    "type": "string",
+                                    "example": "Molag Bal"
+                                },
+                                "level": {
+                                    "type": "number",
+                                    "example": 1
+                                },
+                                "championPoints": {
+                                    "type": "number",
+                                    "example": 0
+                                },
+                                "class": {
+                                    "type": "string",
+                                    "example": "Warrior"
+                                },
+                                "alliance": {
+                                    "type": "string",
+                                    "example": "Aldmeri Dominion"
+                                },
+                                "joinDate": {
+                                    "type": "string",
+                                    "example": "2024-01-01"
+                                },
+                                "role": {
+                                    "type": "string",
+                                    "example": "Tank"
+                                },
+                                "achievements": {
+                                    "type": "array",
+                                    "example": [],
+                                    "items": {}
+                                },
+                                "stats": {
+                                    "type": "object",
+                                    "properties": {}
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "molagbal@example.com"
+                                },
+                                "bio": {
+                                    "type": "string",
+                                    "example": "This is Molag Bal"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            }
+        },
+        "/players/{id}": {
+            "get": {
+                "tags": ["Players"],
+                "summary": "Get a player by id",
+                "description": "Returns a single player by its MongoDB ObjectId.",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Players"],
+                "summary": "Replace a player",
+                "description": "Replaces a player document by id. All player fields are expected. If guild_id is provided, it must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Complete replacement payload for a player.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "Molag Bal"
+                                },
+                                "displayName": {
+                                    "type": "string",
+                                    "example": "Molag Bal"
+                                },
+                                "level": {
+                                    "type": "number",
+                                    "example": 1
+                                },
+                                "championPoints": {
+                                    "type": "number",
+                                    "example": 0
+                                },
+                                "class": {
+                                    "type": "string",
+                                    "example": "Warrior"
+                                },
+                                "alliance": {
+                                    "type": "string",
+                                    "example": "Aldmeri Dominion"
+                                },
+                                "joinDate": {
+                                    "type": "string",
+                                    "example": "2024-01-01"
+                                },
+                                "role": {
+                                    "type": "string",
+                                    "example": "Tank"
+                                },
+                                "achievements": {
+                                    "type": "array",
+                                    "example": [],
+                                    "items": {}
+                                },
+                                "stats": {
+                                    "type": "object",
+                                    "properties": {}
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "molagbal@example.com"
+                                },
+                                "bio": {
+                                    "type": "string",
+                                    "example": "This is Molag Bal"
+                                },
+                                "guild_id": {
+                                    "type": "string",
+                                    "example": "607c191e810c19729de860ea"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": ["Players"],
+                "summary": "Update a player",
+                "description": "Partially updates a player by id. If guild_id is included, it must reference an existing guild or be null to clear membership.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Partial player payload. Include only the fields you want to change.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "guild_id": {
+                                    "type": "string",
+                                    "example": "607c191e810c19729de860ea"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": ["Players"],
+                "summary": "Delete a player",
+                "description": "Deletes a player by id.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sessionAuth": []
+                    }
+                ]
+            }
+        },
+        "/guildEventListings/": {
+            "get": {
+                "tags": ["Guild Event Listings"],
+                "summary": "Get all guild event listings",
+                "description": "Returns every guild event listing in the collection.",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Guild Event Listings"],
+                "summary": "Create a guild event listing",
+                "description": "Creates a new guild event listing. The organizer must be an existing player and guild_id must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Full guild event listing payload. The organizer must be a valid player ObjectId and guild_id must reference an existing guild.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Nightfall Raid"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Endgame trial for veteran players"
+                                },
+                                "eventDate": {
+                                    "type": "string",
+                                    "example": "2026-07-01T20:00:00.000Z"
+                                },
+                                "durationMinutes": {
+                                    "type": "number",
+                                    "example": 180
+                                },
+                                "eventType": {
+                                    "type": "string",
+                                    "example": "Raid"
+                                },
+                                "organizer": {
+                                    "type": "string",
+                                    "example": "6a2a396afba268ea258ee3d4"
+                                },
+                                "guild_id": {
+                                    "type": "string",
+                                    "example": "6a2a3932fba268ea258ee3cf"
+                                },
+                                "attendees": {
+                                    "type": "array",
+                                    "example": [
+                                        "6a2a396afba268ea258ee3d4",
+                                        "6a2a396afba268ea258ee3d5"
+                                    ],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "requirements": {
+                                    "type": "object",
+                                    "properties": {
+                                        "minLevel": {
+                                            "type": "number",
+                                            "example": 50
+                                        },
+                                        "minChampionPoints": {
+                                            "type": "number",
+                                            "example": 1600
+                                        },
+                                        "rolesNeeded": {
+                                            "type": "array",
+                                            "example": ["Healer", "Tank"],
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "recurring": {
+                                    "type": "boolean",
+                                    "example": false
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "example": "2026-06-16T12:00:00.000Z"
+                                },
+                                "recurrencePattern": {},
+                                "recurrenceDays": {
+                                    "type": "array",
+                                    "example": [],
+                                    "items": {}
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/guildEventListings/{id}": {
+            "get": {
+                "tags": ["Guild Event Listings"],
+                "summary": "Get a guild event listing by id",
+                "description": "Returns a single guild event listing by its MongoDB ObjectId.",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Guild Event Listings"],
+                "summary": "Replace a guild event listing",
+                "description": "Replaces a guild event listing by id. The organizer must be an existing player and guild_id must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Complete replacement payload for a guild event listing.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Weekly Dungeon Night"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Casual group for veteran dungeons"
+                                },
+                                "eventDate": {
+                                    "type": "string",
+                                    "example": "2026-07-03T19:30:00.000Z"
+                                },
+                                "durationMinutes": {
+                                    "type": "number",
+                                    "example": 120
+                                },
+                                "eventType": {
+                                    "type": "string",
+                                    "example": "Dungeon"
+                                },
+                                "organizer": {
+                                    "type": "string",
+                                    "example": "6a2a396afba268ea258ee3d5"
+                                },
+                                "guild_id": {
+                                    "type": "string",
+                                    "example": "6a2a3932fba268ea258ee3cf"
+                                },
+                                "attendees": {
+                                    "type": "array",
+                                    "example": ["6a2a396afba268ea258ee3d5"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "requirements": {
+                                    "type": "object",
+                                    "properties": {
+                                        "minLevel": {
+                                            "type": "number",
+                                            "example": 50
+                                        }
+                                    }
+                                },
+                                "recurring": {
+                                    "type": "boolean",
+                                    "example": true
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "example": "2026-06-16T12:05:00.000Z"
+                                },
+                                "recurrencePattern": {
+                                    "type": "string",
+                                    "example": "weekly"
+                                },
+                                "recurrenceDays": {
+                                    "type": "array",
+                                    "example": ["Thursday"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Guild Event Listings"],
+                "summary": "Update a guild event listing",
+                "description": "Partially updates a guild event listing by id. If provided, organizer must reference an existing player and guild_id must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Partial guild event listing payload. Include only the fields you want to change.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "description": {
+                                    "type": "string",
+                                    "example": "Updated event description"
+                                },
+                                "durationMinutes": {
+                                    "type": "number",
+                                    "example": 150
+                                },
+                                "attendees": {
+                                    "type": "array",
+                                    "example": ["6a2a396afba268ea258ee3d4"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Guild Event Listings"],
+                "summary": "Delete a guild event listing",
+                "description": "Deletes a guild event listing by id.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/guildStoreListings/": {
+            "get": {
+                "tags": ["Guild Store Listings"],
+                "summary": "Get all guild store listings",
+                "description": "Returns every guild store listing in the collection.",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Guild Store Listings"],
+                "summary": "Create a guild store listing",
+                "description": "Creates a new guild store listing. The ownerPlayer_id must be an existing player and sellerGuild_id must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Full guild store listing payload. The ownerPlayer_id must be a valid player ObjectId and sellerGuild_id must reference an existing guild.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "itemName": {
+                                    "type": "string",
+                                    "example": "Rubedite Greatsword"
+                                },
+                                "itemType": {
+                                    "type": "string",
+                                    "example": "Weapon"
+                                },
+                                "subType": {
+                                    "type": "string",
+                                    "example": "Greatsword"
+                                },
+                                "quality": {
+                                    "type": "string",
+                                    "example": "Legendary"
+                                },
+                                "priceGold": {
+                                    "type": "number",
+                                    "example": 15000
+                                },
+                                "quantity": {
+                                    "type": "number",
+                                    "example": 1
+                                },
+                                "sellerGuild_id": {
+                                    "type": "string",
+                                    "example": "6a2a3932fba268ea258ee3cf"
+                                },
+                                "ownerPlayer_id": {
+                                    "type": "string",
+                                    "example": "6a2a396afba268ea258ee3d4"
+                                },
+                                "listedAt": {
+                                    "type": "string",
+                                    "example": "2026-06-20T10:00:00.000Z"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Forged from high-tier rubedite. Perfect condition."
+                                },
+                                "levelRequirement": {
+                                    "type": "number",
+                                    "example": 50
+                                },
+                                "traits": {
+                                    "type": "array",
+                                    "example": ["Sharpened"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "enchantments": {
+                                    "type": "array",
+                                    "example": ["Stamina Damage"],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "sellerNotes": {
+                                    "type": "string",
+                                    "example": "Best in slot weapon for stamina DPS"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/guildStoreListings/{id}": {
+            "get": {
+                "tags": ["Guild Store Listings"],
+                "summary": "Get a guild store listing by id",
+                "description": "Returns a single guild store listing by its MongoDB ObjectId.",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Guild Store Listings"],
+                "summary": "Replace a guild store listing",
+                "description": "Replaces a guild store listing by id. The ownerPlayer_id must be an existing player and sellerGuild_id must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Complete replacement payload for a guild store listing.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "itemName": {
+                                    "type": "string",
+                                    "example": "Service Potion"
+                                },
+                                "itemType": {
+                                    "type": "string",
+                                    "example": "Consumable"
+                                },
+                                "subType": {
+                                    "type": "string",
+                                    "example": "Potion"
+                                },
+                                "quality": {
+                                    "type": "string",
+                                    "example": "Common"
+                                },
+                                "priceGold": {
+                                    "type": "number",
+                                    "example": 10
+                                },
+                                "quantity": {
+                                    "type": "number",
+                                    "example": 50
+                                },
+                                "sellerGuild_id": {
+                                    "type": "string",
+                                    "example": "6a2a3932fba268ea258ee3cf"
+                                },
+                                "ownerPlayer_id": {
+                                    "type": "string",
+                                    "example": "6a2a396afba268ea258ee3d5"
+                                },
+                                "listedAt": {
+                                    "type": "string",
+                                    "example": "2026-06-01T16:30:00.000Z"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Basic potion used in training and events."
+                                },
+                                "levelRequirement": {
+                                    "type": "number",
+                                    "example": 1
+                                },
+                                "traits": {
+                                    "type": "array",
+                                    "example": [],
+                                    "items": {}
+                                },
+                                "enchantments": {
+                                    "type": "array",
+                                    "example": [],
+                                    "items": {}
+                                },
+                                "sellerNotes": {
+                                    "type": "string",
+                                    "example": "Bulk sale"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Guild Store Listings"],
+                "summary": "Update a guild store listing",
+                "description": "Partially updates a guild store listing by id. If provided, ownerPlayer_id must reference an existing player and sellerGuild_id must reference an existing guild.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Partial guild store listing payload. Include only the fields you want to change.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "priceGold": {
+                                    "type": "number",
+                                    "example": 12000
+                                },
+                                "sellerNotes": {
+                                    "type": "string",
+                                    "example": "Price reduced for quick sale"
+                                },
+                                "quality": {
+                                    "type": "string",
+                                    "example": "Epic"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Guild Store Listings"],
+                "summary": "Delete a guild store listing",
+                "description": "Deletes a guild store listing by id.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
     }
-  ],
-  "schemes": [
-    "https"
-  ],
-  "paths": {
-    "/guilds/": {
-      "get": {
-        "tags": [
-          "Guilds"
-        ],
-        "summary": "Get all guilds",
-        "description": "Returns every guild in the collection.",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Guilds"
-        ],
-        "summary": "Create a guild",
-        "description": "Creates a new guild. Special rule: the guildMaster must be an existing player and cannot already be the guild master of another guild. On success, that player\\'s guild_id is synced to the new guild.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Full guild payload. The guildMaster value must be a valid player ObjectId and that player can only be guild master of one guild at a time.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Covenant of Shadows"
-                },
-                "tag": {
-                  "type": "string",
-                  "example": "CoS"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "A guild focused on PvP content"
-                },
-                "alliance": {
-                  "type": "string",
-                  "example": "Aldmeri Dominion"
-                },
-                "memberCount": {
-                  "type": "number",
-                  "example": 1
-                },
-                "createdAt": {
-                  "type": "string",
-                  "example": "2024-01-01"
-                },
-                "activities": {
-                  "type": "array",
-                  "example": [
-                    "Raid",
-                    "Dungeon"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "ranks": {
-                  "type": "array",
-                  "example": [
-                    "Guild Master",
-                    "Officer",
-                    "Member"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "recruitmentOpen": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "language": {
-                  "type": "string",
-                  "example": "English"
-                },
-                "region": {
-                  "type": "string",
-                  "example": "NA"
-                },
-                "guildMaster": {
-                  "type": "string",
-                  "example": "607c191e810c19729de860ea"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      }
-    },
-    "/guilds/{id}": {
-      "get": {
-        "tags": [
-          "Guilds"
-        ],
-        "summary": "Get a guild by id",
-        "description": "Returns a single guild by its MongoDB ObjectId.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Guilds"
-        ],
-        "summary": "Replace a guild",
-        "description": "Replaces a guild document by id. All guild fields are required. If guildMaster changes, the previous guild master is cleared from this guild and the new guild master is synced. A player cannot become guild master of more than one guild.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Complete replacement payload for a guild.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Nightfall Raiders"
-                },
-                "tag": {
-                  "type": "string",
-                  "example": "NR"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "A guild focused on endgame content"
-                },
-                "alliance": {
-                  "type": "string",
-                  "example": "Daggerfall Covenant"
-                },
-                "memberCount": {
-                  "type": "number",
-                  "example": 20
-                },
-                "createdAt": {
-                  "type": "string",
-                  "example": "2024-02-01"
-                },
-                "activities": {
-                  "type": "array",
-                  "example": [
-                    "Raid",
-                    "PvP"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "ranks": {
-                  "type": "array",
-                  "example": [
-                    "Guild Master",
-                    "Officer",
-                    "Member"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "recruitmentOpen": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "language": {
-                  "type": "string",
-                  "example": "English"
-                },
-                "region": {
-                  "type": "string",
-                  "example": "EU"
-                },
-                "guildMaster": {
-                  "type": "string",
-                  "example": "607c191e810c19729de860eb"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Guilds"
-        ],
-        "summary": "Update a guild",
-        "description": "Partially updates a guild by id. If guildMaster is provided, it must reference an existing player who is not already guild master of another guild. When changed, player guild_id values are synced automatically.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Partial guild payload. Include only the fields you want to change.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Nightfall Raiders"
-                },
-                "tag": {
-                  "type": "string",
-                  "example": "NR"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "A guild focused on endgame content"
-                },
-                "alliance": {
-                  "type": "string",
-                  "example": "Daggerfall Covenant"
-                },
-                "memberCount": {
-                  "type": "number",
-                  "example": 20
-                },
-                "createdAt": {
-                  "type": "string",
-                  "example": "2024-02-01"
-                },
-                "activities": {
-                  "type": "array",
-                  "example": [
-                    "Raid",
-                    "PvP"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "ranks": {
-                  "type": "array",
-                  "example": [
-                    "Guild Master",
-                    "Officer",
-                    "Member"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "recruitmentOpen": {
-                  "type": "boolean",
-                  "example": false
-                },
-                "language": {
-                  "type": "string",
-                  "example": "English"
-                },
-                "region": {
-                  "type": "string",
-                  "example": "EU"
-                },
-                "guildMaster": {
-                  "type": "string",
-                  "example": "607c191e810c19729de860eb"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Guilds"
-        ],
-        "summary": "Delete a guild",
-        "description": "Deletes a guild by id. Special rule: all players whose guild_id points to this guild are automatically cleared to null.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      }
-    },
-    "/players/": {
-      "get": {
-        "tags": [
-          "Players"
-        ],
-        "summary": "Get all players",
-        "description": "Returns every player in the collection.",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Players"
-        ],
-        "summary": "Create a player",
-        "description": "Creates a new player. If guild_id is provided, it must reference an existing guild.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Full player payload. The stats field must be a plain object when provided.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "type": "string",
-                  "example": "Molag Bal"
-                },
-                "displayName": {
-                  "type": "string",
-                  "example": "Molag Bal"
-                },
-                "level": {
-                  "type": "number",
-                  "example": 1
-                },
-                "championPoints": {
-                  "type": "number",
-                  "example": 0
-                },
-                "class": {
-                  "type": "string",
-                  "example": "Warrior"
-                },
-                "alliance": {
-                  "type": "string",
-                  "example": "Aldmeri Dominion"
-                },
-                "joinDate": {
-                  "type": "string",
-                  "example": "2024-01-01"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "Tank"
-                },
-                "achievements": {
-                  "type": "array",
-                  "example": [],
-                  "items": {}
-                },
-                "stats": {
-                  "type": "object",
-                  "properties": {}
-                },
-                "email": {
-                  "type": "string",
-                  "example": "molagbal@example.com"
-                },
-                "bio": {
-                  "type": "string",
-                  "example": "This is Molag Bal"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      }
-    },
-    "/players/{id}": {
-      "get": {
-        "tags": [
-          "Players"
-        ],
-        "summary": "Get a player by id",
-        "description": "Returns a single player by its MongoDB ObjectId.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Players"
-        ],
-        "summary": "Replace a player",
-        "description": "Replaces a player document by id. All player fields are expected. If guild_id is provided, it must reference an existing guild.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Complete replacement payload for a player.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "type": "string",
-                  "example": "Molag Bal"
-                },
-                "displayName": {
-                  "type": "string",
-                  "example": "Molag Bal"
-                },
-                "level": {
-                  "type": "number",
-                  "example": 1
-                },
-                "championPoints": {
-                  "type": "number",
-                  "example": 0
-                },
-                "class": {
-                  "type": "string",
-                  "example": "Warrior"
-                },
-                "alliance": {
-                  "type": "string",
-                  "example": "Aldmeri Dominion"
-                },
-                "joinDate": {
-                  "type": "string",
-                  "example": "2024-01-01"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "Tank"
-                },
-                "achievements": {
-                  "type": "array",
-                  "example": [],
-                  "items": {}
-                },
-                "stats": {
-                  "type": "object",
-                  "properties": {}
-                },
-                "email": {
-                  "type": "string",
-                  "example": "molagbal@example.com"
-                },
-                "bio": {
-                  "type": "string",
-                  "example": "This is Molag Bal"
-                },
-                "guild_id": {
-                  "type": "string",
-                  "example": "607c191e810c19729de860ea"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Players"
-        ],
-        "summary": "Update a player",
-        "description": "Partially updates a player by id. If guild_id is included, it must reference an existing guild or be null to clear membership.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Partial player payload. Include only the fields you want to change.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "guild_id": {
-                  "type": "string",
-                  "example": "607c191e810c19729de860ea"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Players"
-        ],
-        "summary": "Delete a player",
-        "description": "Deletes a player by id.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "security": [
-          {
-            "sessionAuth": []
-          }
-        ]
-      }
-    }
-  }
 }

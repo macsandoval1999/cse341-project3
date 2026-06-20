@@ -1,0 +1,191 @@
+[{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a04d"
+  },
+  "itemName": "Rubedite Greatsword",
+  "itemType": "Weapon",
+  "subType": "Greatsword",
+  "quality": "Legendary",
+  "priceGold": 15000,
+  "quantity": 1,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3d9"
+  },
+  "listedAt": {
+    "$date": "2025-06-20T10:00:00.000Z"
+  },
+  "description": "Forged from high-tier rubedite. Perfect condition.",
+  "levelRequirement": 50,
+  "traits": [
+    "Sharpened"
+  ],
+  "enchantments": [
+    "Stamina Damage"
+  ],
+  "sellerNotes": ""
+},
+{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a04e"
+  },
+  "itemName": "Service Potion",
+  "itemType": "Consumable",
+  "subType": "Potion",
+  "quality": "Common",
+  "priceGold": 10,
+  "quantity": 50,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3de"
+  },
+  "listedAt": {
+    "$date": "2025-06-01T16:30:00.000Z"
+  },
+  "description": "Basic potion used in training and events.",
+  "levelRequirement": 0,
+  "traits": [],
+  "enchantments": [],
+  "sellerNotes": ""
+},
+{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a04f"
+  },
+  "itemName": "Ebonheart Shield",
+  "itemType": "Armor",
+  "subType": "Shield",
+  "quality": "Epic",
+  "priceGold": 4200,
+  "quantity": 1,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3e3"
+  },
+  "listedAt": {
+    "$date": "2025-05-15T09:00:00.000Z"
+  },
+  "description": "Sturdy shield with light enchantment.",
+  "levelRequirement": 40,
+  "traits": [
+    "Reinforced"
+  ],
+  "enchantments": [
+    "Block Cost Reduction"
+  ],
+  "sellerNotes": "Trade-in accepted"
+},
+{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a050"
+  },
+  "itemName": "Training Scroll",
+  "itemType": "Misc",
+  "subType": "Scroll",
+  "quality": "Uncommon",
+  "priceGold": 75,
+  "quantity": 10,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3e8"
+  },
+  "listedAt": {
+    "$date": "2025-04-12T14:20:00.000Z"
+  },
+  "description": "Consumable scroll that grants XP boost for a short time.",
+  "levelRequirement": 0,
+  "traits": [],
+  "enchantments": [],
+  "sellerNotes": ""
+},
+{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a051"
+  },
+  "itemName": "Boots of the Frost Weaver",
+  "itemType": "Armor",
+  "subType": "Footwear",
+  "quality": "Rare",
+  "priceGold": 2400,
+  "quantity": 1,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3ec"
+  },
+  "listedAt": {
+    "$date": "2025-03-10T11:11:00.000Z"
+  },
+  "description": "Enchanted boots with minor frost effect.",
+  "levelRequirement": 30,
+  "traits": [
+    "Frost"
+  ],
+  "enchantments": [
+    "Cold Damage"
+  ],
+  "sellerNotes": "Can be upgraded"
+},
+{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a052"
+  },
+  "itemName": "Crafting Mat Bundle",
+  "itemType": "Material",
+  "subType": "Resource",
+  "quality": "Common",
+  "priceGold": 5,
+  "quantity": 100,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3ec"
+  },
+  "listedAt": {
+    "$date": "2025-06-05T08:45:00.000Z"
+  },
+  "description": "Bulk crafting materials for provisioning and blacksmithing.",
+  "levelRequirement": 0,
+  "traits": [],
+  "enchantments": [],
+  "sellerNotes": "Open to offers"
+},
+{
+  "_id": {
+    "$oid": "6a31f4171b27e65fa358a053"
+  },
+  "itemName": "Ring of the Swift",
+  "itemType": "Accessory",
+  "subType": "Ring",
+  "quality": "Epic",
+  "priceGold": 3500,
+  "quantity": 1,
+  "sellerGuild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  },
+  "ownerPlayer_id": {
+    "$oid": "6a2a396afba268ea258ee3ec"
+  },
+  "listedAt": {
+    "$date": "2025-05-20T13:00:00.000Z"
+  },
+  "description": "A ring that increases movement speed and stamina regeneration.",
+  "levelRequirement": 45,
+  "traits": [
+    "Swift"
+  ],
+  "enchantments": [
+    "Stamina Regeneration"
+  ],
+  "sellerNotes": "Negotiable price"
+}]

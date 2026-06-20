@@ -1,0 +1,1178 @@
+[{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3d4"
+  },
+  "username": "AshenBlade",
+  "displayName": "Ashen Blade",
+  "level": 50,
+  "championPoints": 1600,
+  "class": "Dragonknight",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2015-11-10T08:20:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [
+    "Trial Conqueror",
+    "Veteran Raider"
+  ],
+  "stats": {
+    "kills": 2543,
+    "deaths": 1231,
+    "questsCompleted": 842,
+    "hoursPlayed": 540.5
+  },
+  "email": "ashenblade@example.com",
+  "bio": "Hardcore raider and tank mentor.",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3d5"
+  },
+  "username": "MoonSinger",
+  "displayName": "Moon Singer",
+  "level": 45,
+  "championPoints": 1200,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2017-04-02T14:00:00.000Z"
+  },
+  "role": "Healer",
+  "achievements": [
+    "Guild Founder"
+  ],
+  "stats": {
+    "kills": 842,
+    "deaths": 412,
+    "questsCompleted": 1021,
+    "hoursPlayed": 320
+  },
+  "email": "moonsinger@example.com",
+  "bio": "Guild founder and raid healer.",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3d6"
+  },
+  "username": "NightProwl",
+  "displayName": "Night Prowl",
+  "level": 50,
+  "championPoints": 1580,
+  "class": "Nightblade",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2016-07-07T10:30:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "PvP Slayer"
+  ],
+  "stats": {
+    "kills": 4301,
+    "deaths": 3001,
+    "questsCompleted": 640,
+    "hoursPlayed": 880.2
+  },
+  "email": "nightprowl@example.com",
+  "bio": "Stealthy DPS and campaign veteran.",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3d7"
+  },
+  "username": "StoneWard",
+  "displayName": "Stone Ward",
+  "level": 48,
+  "championPoints": 1400,
+  "class": "Warden",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2019-02-20T09:10:00.000Z"
+  },
+  "role": "Support",
+  "achievements": [
+    "Master Crafter"
+  ],
+  "stats": {
+    "kills": 1200,
+    "deaths": 800,
+    "questsCompleted": 420,
+    "hoursPlayed": 210
+  },
+  "email": "stoneward@example.com",
+  "bio": "Community officer and crafting lead.",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3d8"
+  },
+  "username": "StormCaller",
+  "displayName": "Storm Caller",
+  "level": 50,
+  "championPoints": 1595,
+  "class": "Sorcerer",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2020-06-15T13:00:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Arena Champion"
+  ],
+  "stats": {
+    "kills": 3100,
+    "deaths": 2100,
+    "questsCompleted": 980,
+    "hoursPlayed": 610.7
+  },
+  "email": "stormcaller@example.com",
+  "bio": "Competitive PvPer and sorcerer main.",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3d9"
+  },
+  "username": "GrimWeaver",
+  "displayName": "Grim Weaver",
+  "level": 42,
+  "championPoints": 900,
+  "class": "Necromancer",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2021-01-12T07:05:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Collector"
+  ],
+  "stats": {
+    "kills": 780,
+    "deaths": 456,
+    "questsCompleted": 301,
+    "hoursPlayed": 140
+  },
+  "email": "grimweaver@example.com",
+  "bio": "Loves experimenting with builds.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3da"
+  },
+  "username": "RiftWalker",
+  "displayName": "Rift Walker",
+  "level": 50,
+  "championPoints": 1570,
+  "class": "Sorcerer",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2018-12-24T21:00:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Dungeon Master"
+  ],
+  "stats": {
+    "kills": 1900,
+    "deaths": 1100,
+    "questsCompleted": 720,
+    "hoursPlayed": 480.1
+  },
+  "email": "riftwalker@example.com",
+  "bio": "PvP team leader.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3db"
+  },
+  "username": "Oakenshield",
+  "displayName": "Oaken Shield",
+  "level": 35,
+  "championPoints": 400,
+  "class": "Dragonknight",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2022-03-03T12:12:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {
+    "kills": 300,
+    "deaths": 210,
+    "questsCompleted": 120,
+    "hoursPlayed": 60.4
+  },
+  "email": "oakenshield@example.com",
+  "bio": "New raider learning the ropes.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3dc"
+  },
+  "username": "SilkTrader",
+  "displayName": "Silk Trader",
+  "level": 28,
+  "championPoints": 120,
+  "class": "Warden",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2021-06-20T16:40:00.000Z"
+  },
+  "role": "Crafter",
+  "achievements": [
+    "Master Trader"
+  ],
+  "stats": {
+    "kills": 80,
+    "deaths": 45,
+    "questsCompleted": 210,
+    "hoursPlayed": 95
+  },
+  "email": "silktrader@example.com",
+  "bio": "Runs trade deals across zones.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3dd"
+  },
+  "username": "EmberFist",
+  "displayName": "Ember Fist",
+  "level": 50,
+  "championPoints": 1550,
+  "class": "Dragonknight",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2014-10-01T05:00:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Veteran Raider",
+    "Lore Master"
+  ],
+  "stats": {
+    "kills": 5100,
+    "deaths": 2900,
+    "questsCompleted": 2200,
+    "hoursPlayed": 1400.3
+  },
+  "email": "emberfist@example.com",
+  "bio": "Longtime player and storyteller.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3cf"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3de"
+  },
+  "username": "ScribeAeon",
+  "displayName": "Scribe Aeon",
+  "level": 40,
+  "championPoints": 700,
+  "class": "Templar",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2016-02-14T10:00:00.000Z"
+  },
+  "role": "Healer",
+  "achievements": [
+    "Lorekeeper"
+  ],
+  "stats": {
+    "kills": 430,
+    "deaths": 200,
+    "questsCompleted": 540,
+    "hoursPlayed": 260
+  },
+  "email": "scribeaeon@example.com",
+  "bio": "Runs lore nights and RP events.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3df"
+  },
+  "username": "QuickSilver",
+  "displayName": "Quick Silver",
+  "level": 47,
+  "championPoints": 1450,
+  "class": "Nightblade",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2019-08-08T22:22:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Solo Legend"
+  ],
+  "stats": {
+    "kills": 2400,
+    "deaths": 1500,
+    "questsCompleted": 1120,
+    "hoursPlayed": 700.9
+  },
+  "email": "quicksilver@example.com",
+  "bio": "Solo content specialist and streamer.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e0"
+  },
+  "username": "FrostWeave",
+  "displayName": "Frost Weave",
+  "level": 33,
+  "championPoints": 300,
+  "class": "Sorcerer",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2020-11-11T11:11:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [],
+  "stats": {
+    "kills": 510,
+    "deaths": 320,
+    "questsCompleted": 210,
+    "hoursPlayed": 110
+  },
+  "email": "frostweave@example.com",
+  "bio": "Tinkers with frost builds.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e1"
+  },
+  "username": "HarvestHand",
+  "displayName": "Harvest Hand",
+  "level": 22,
+  "championPoints": 40,
+  "class": "Warden",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2022-09-09T09:09:00.000Z"
+  },
+  "role": "Crafter",
+  "achievements": [],
+  "stats": {
+    "kills": 20,
+    "deaths": 12,
+    "questsCompleted": 45,
+    "hoursPlayed": 30.5
+  },
+  "email": "harvesthand@example.com",
+  "bio": "Focuses on provisioning and trade.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e2"
+  },
+  "username": "IronSinger",
+  "displayName": "Iron Singer",
+  "level": 50,
+  "championPoints": 1600,
+  "class": "Dragonknight",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2015-12-12T12:12:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Trial Conqueror"
+  ],
+  "stats": {
+    "kills": 6200,
+    "deaths": 3400,
+    "questsCompleted": 2700,
+    "hoursPlayed": 1600
+  },
+  "email": "ironsinger@example.com",
+  "bio": "Progression raider and mentor.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d0"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e3"
+  },
+  "username": "MistCaller",
+  "displayName": "Mist Caller",
+  "level": 38,
+  "championPoints": 560,
+  "class": "Templar",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2018-05-05T05:05:00.000Z"
+  },
+  "role": "Healer",
+  "achievements": [],
+  "stats": {
+    "kills": 220,
+    "deaths": 140,
+    "questsCompleted": 360,
+    "hoursPlayed": 180.2
+  },
+  "email": "mistcaller@example.com",
+  "bio": "Weekend healer and event organizer.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e4"
+  },
+  "username": "BlightSinger",
+  "displayName": "Blight Singer",
+  "level": 49,
+  "championPoints": 1500,
+  "class": "Necromancer",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2019-10-10T10:10:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Collector"
+  ],
+  "stats": {
+    "kills": 1450,
+    "deaths": 980,
+    "questsCompleted": 640,
+    "hoursPlayed": 420
+  },
+  "email": "blightsinger@example.com",
+  "bio": "Enthusiastic necromancer and collector.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e5"
+  },
+  "username": "DawnWeaver",
+  "displayName": "Dawn Weaver",
+  "level": 30,
+  "championPoints": 200,
+  "class": "Sorcerer",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2023-01-01T00:00:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [],
+  "stats": {
+    "kills": 150,
+    "deaths": 95,
+    "questsCompleted": 85,
+    "hoursPlayed": 40
+  },
+  "email": "dawnweaver@example.com",
+  "bio": "Casual player exploring content.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e6"
+  },
+  "username": "GaleRunner",
+  "displayName": "Gale Runner",
+  "level": 46,
+  "championPoints": 1300,
+  "class": "Nightblade",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2017-03-03T03:03:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Dungeon Master"
+  ],
+  "stats": {
+    "kills": 2100,
+    "deaths": 1600,
+    "questsCompleted": 980,
+    "hoursPlayed": 540
+  },
+  "email": "galerunner@example.com",
+  "bio": "PvE and dungeon specialist.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e7"
+  },
+  "username": "HarborLight",
+  "displayName": "Harbor Light",
+  "level": 41,
+  "championPoints": 780,
+  "class": "Warden",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2020-02-20T20:20:00.000Z"
+  },
+  "role": "Support",
+  "achievements": [],
+  "stats": {
+    "kills": 430,
+    "deaths": 300,
+    "questsCompleted": 560,
+    "hoursPlayed": 260.5
+  },
+  "email": "harborlight@example.com",
+  "bio": "Organizes crafting events.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d1"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e8"
+  },
+  "username": "CinderFang",
+  "displayName": "Cinder Fang",
+  "level": 50,
+  "championPoints": 1599,
+  "class": "Nightblade",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2013-07-07T07:07:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [
+    "Veteran Raider",
+    "Arena Champion"
+  ],
+  "stats": {
+    "kills": 7100,
+    "deaths": 4100,
+    "questsCompleted": 3300,
+    "hoursPlayed": 2000
+  },
+  "email": "cinderfang@example.com",
+  "bio": "High-skill player and raid captain.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3e9"
+  },
+  "username": "BrambleRoot",
+  "displayName": "Bramble Root",
+  "level": 29,
+  "championPoints": 150,
+  "class": "Warden",
+  "alliance": "Daggerfall Covenant",
+  "joinDate": {
+    "$date": "2022-12-12T12:00:00.000Z"
+  },
+  "role": "Healer",
+  "achievements": [],
+  "stats": {
+    "kills": 60,
+    "deaths": 44,
+    "questsCompleted": 102,
+    "hoursPlayed": 70
+  },
+  "email": "brambleroot@example.com",
+  "bio": "Quiet crafter and healer.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3ea"
+  },
+  "username": "Starforged",
+  "displayName": "Star Forged",
+  "level": 36,
+  "championPoints": 480,
+  "class": "Sorcerer",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2019-04-04T04:04:00.000Z"
+  },
+  "role": "DPS",
+  "achievements": [],
+  "stats": {
+    "kills": 640,
+    "deaths": 420,
+    "questsCompleted": 240,
+    "hoursPlayed": 150
+  },
+  "email": "starforged@example.com",
+  "bio": "Enjoys group dungeons and crafting.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3eb"
+  },
+  "username": "ValeGuard",
+  "displayName": "Vale Guard",
+  "level": 44,
+  "championPoints": 1180,
+  "class": "Dragonknight",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2016-08-08T08:08:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [
+    "Trial Conqueror"
+  ],
+  "stats": {
+    "kills": 1500,
+    "deaths": 900,
+    "questsCompleted": 800,
+    "hoursPlayed": 420
+  },
+  "email": "valeguard@example.com",
+  "bio": "Reliable tank for pickup groups.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3ec"
+  },
+  "username": "Mercantile",
+  "displayName": "Mercantile",
+  "level": 27,
+  "championPoints": 80,
+  "class": "Templar",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2021-07-07T07:00:00.000Z"
+  },
+  "role": "Crafter",
+  "achievements": [],
+  "stats": {
+    "kills": 45,
+    "deaths": 30,
+    "questsCompleted": 98,
+    "hoursPlayed": 55
+  },
+  "email": "mercantile@example.com",
+  "bio": "Small-time trader and crafter.",
+  "guild_id": {
+    "$oid": "6a2a3932fba268ea258ee3d2"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3ed"
+  },
+  "id": "p26",
+  "username": "EchoSable",
+  "displayName": "Echo Sable",
+  "level": 39,
+  "championPoints": 620,
+  "class": "Nightblade",
+  "alliance": "Daggerfall Covenant",
+  "guildIds": [
+    "g3"
+  ],
+  "joinDate": "2018-01-01T01:01:00Z",
+  "lastOnline": "2026-06-08T23:00:00Z",
+  "isOnline": true,
+  "role": "DPS",
+  "achievements": [],
+  "stats": {
+    "kills": 980,
+    "deaths": 540,
+    "questsCompleted": 410,
+    "hoursPlayed": 260
+  },
+  "email": "echosable@example.com",
+  "bio": "Nightblade who enjoys stealth missions."
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3ee"
+  },
+  "id": "p27",
+  "username": "TorchBearer",
+  "displayName": "Torch Bearer",
+  "level": 34,
+  "championPoints": 350,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "guildIds": [
+    "g1"
+  ],
+  "joinDate": "2020-10-10T10:10:00Z",
+  "lastOnline": "2026-04-15T14:00:00Z",
+  "isOnline": false,
+  "role": "Healer",
+  "achievements": [],
+  "stats": {
+    "kills": 210,
+    "deaths": 150,
+    "questsCompleted": 260,
+    "hoursPlayed": 130
+  },
+  "email": "torchbearer@example.com",
+  "bio": "Event healer and guild officer."
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3ef"
+  },
+  "id": "p28",
+  "username": "GloomStalker",
+  "displayName": "Gloom Stalker",
+  "level": 31,
+  "championPoints": 250,
+  "class": "Necromancer",
+  "alliance": "Aldmeri Dominion",
+  "guildIds": [
+    "g2"
+  ],
+  "joinDate": "2019-09-09T09:09:00Z",
+  "lastOnline": "2026-03-03T03:03:00Z",
+  "isOnline": false,
+  "role": "DPS",
+  "achievements": [],
+  "stats": {
+    "kills": 320,
+    "deaths": 210,
+    "questsCompleted": 180,
+    "hoursPlayed": 90
+  },
+  "email": "gloomstalker@example.com",
+  "bio": "Explores solo content and achievements."
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3f0"
+  },
+  "id": "p29",
+  "username": "BeaconSong",
+  "displayName": "Beacon Song",
+  "level": 43,
+  "championPoints": 1020,
+  "class": "Warden",
+  "alliance": "Daggerfall Covenant",
+  "guildIds": [
+    "g3"
+  ],
+  "joinDate": "2017-05-05T05:05:00Z",
+  "lastOnline": "2026-06-01T17:00:00Z",
+  "isOnline": false,
+  "role": "Support",
+  "achievements": [],
+  "stats": {
+    "kills": 560,
+    "deaths": 420,
+    "questsCompleted": 600,
+    "hoursPlayed": 310
+  },
+  "email": "beaconsong@example.com",
+  "bio": "Group content and support main."
+},
+{
+  "_id": {
+    "$oid": "6a2a396afba268ea258ee3f1"
+  },
+  "id": "p30",
+  "username": "MarketSable",
+  "displayName": "Market Sable",
+  "level": 26,
+  "championPoints": 60,
+  "class": "Sorcerer",
+  "alliance": "Aldmeri Dominion",
+  "guildIds": [
+    "g5"
+  ],
+  "joinDate": "2021-03-03T03:03:00Z",
+  "lastOnline": "2026-02-02T02:02:00Z",
+  "isOnline": false,
+  "role": "Crafter",
+  "achievements": [],
+  "stats": {
+    "kills": 50,
+    "deaths": 38,
+    "questsCompleted": 70,
+    "hoursPlayed": 42
+  },
+  "email": "marketsable@example.com",
+  "bio": "Runs a small crafting shop in-game."
+},
+{
+  "_id": {
+    "$oid": "6a2d1b127e85dbb50f831141"
+  },
+  "username": "mini-1781340946935",
+  "displayName": "Mini",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": null,
+  "role": null,
+  "achievements": null,
+  "stats": null,
+  "email": "mini@example.com",
+  "bio": null,
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1b547203d83c945fa79d"
+  },
+  "username": "direct-full",
+  "displayName": "Direct Full",
+  "level": 25,
+  "championPoints": 10,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2026-06-13T00:00:00.000Z"
+  },
+  "role": "Healer",
+  "achievements": [],
+  "stats": {},
+  "email": "direct-full@example.com",
+  "bio": "direct",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1b797eaf3dec69115787"
+  },
+  "username": "chain-full",
+  "displayName": "Chain Full",
+  "level": 25,
+  "championPoints": 10,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2026-06-13T00:00:00.000Z"
+  },
+  "role": "Healer",
+  "achievements": [],
+  "stats": {},
+  "email": "chain-full@example.com",
+  "bio": "chain",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1c5b7e85dbb50f831142"
+  },
+  "username": "field-1781341275375-base",
+  "displayName": "Field",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": null,
+  "role": null,
+  "achievements": null,
+  "stats": null,
+  "email": "base-1781341275375@example.com",
+  "bio": null,
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1c5b7e85dbb50f831143"
+  },
+  "username": "field-1781341275375-joinDate",
+  "displayName": "Field",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": {
+    "$date": "2026-06-13T00:00:00.000Z"
+  },
+  "role": null,
+  "achievements": null,
+  "stats": null,
+  "email": "joinDate-1781341275490@example.com",
+  "bio": null,
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1c5b7e85dbb50f831144"
+  },
+  "username": "field-1781341275375-role",
+  "displayName": "Field",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": null,
+  "role": "Healer",
+  "achievements": null,
+  "stats": null,
+  "email": "role-1781341275562@example.com",
+  "bio": null,
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1c5b7e85dbb50f831145"
+  },
+  "username": "field-1781341275375-achievements",
+  "displayName": "Field",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": null,
+  "role": null,
+  "achievements": [],
+  "stats": null,
+  "email": "achievements-1781341275635@example.com",
+  "bio": null,
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d1c5b7e85dbb50f831146"
+  },
+  "username": "field-1781341275375-bio",
+  "displayName": "Field",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Templar",
+  "alliance": "Ebonheart Pact",
+  "joinDate": null,
+  "role": null,
+  "achievements": null,
+  "stats": null,
+  "email": "bio-1781341275706@example.com",
+  "bio": "text",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d2513c1c3e1ed2993f652"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d2520c1c3e1ed2993f653"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": {
+    "$oid": "6a2d383d317edf522184c6ed"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d39bd0c6877de290f439f"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d39d10c6877de290f43a0"
+  },
+  "username": "Mal Fibson",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": {
+    "$oid": "6a2d3be6b02ccb0590bb34d9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d3b15d73a7df1e26fbe36"
+  },
+  "username": "The Rizzler",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": {
+    "$oid": "6a2d3b3fd73a7df1e26fbe37"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d46643a3dbc93afc19bfc"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": {
+    "$oid": "6a2d472d3a3dbc93afc19bfd"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2d8602bb1552a4d65b86ad"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d8d6055aa533e5e2b134b"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": null
+},
+{
+  "_id": {
+    "$oid": "6a2d8e3e55aa533e5e2b134d"
+  },
+  "username": "Molag Bal",
+  "displayName": "Molag Bal",
+  "level": 1,
+  "championPoints": 0,
+  "class": "Warrior",
+  "alliance": "Aldmeri Dominion",
+  "joinDate": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "role": "Tank",
+  "achievements": [],
+  "stats": {},
+  "email": "molagbal@example.com",
+  "bio": "This is Molag Bal",
+  "guild_id": null
+}]

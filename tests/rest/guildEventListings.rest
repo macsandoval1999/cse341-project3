@@ -1,0 +1,87 @@
+@baseUrl = http://localhost:3000
+@guildEventListingId = 
+@guildId = 
+@organizerId = 
+@attendeeId = 
+
+### Get all guild event listings
+GET {{baseUrl}}/guildEventListings
+
+### Get guild event listing by id
+GET {{baseUrl}}/guildEventListings/{{guildEventListingId}}
+
+### Create guild event listing
+POST {{baseUrl}}/guildEventListings
+Content-Type: application/json
+
+{
+  "name": "REST Event Listing",
+  "description": "Guild event request for REST Client verification",
+  "eventDate": "2026-07-10T20:00:00.000Z",
+  "durationMinutes": 120,
+  "eventType": "Trial",
+  "organizer": "{{organizerId}}",
+  "guild_id": "{{guildId}}",
+  "attendees": ["{{organizerId}}", "{{attendeeId}}"],
+  "requirements": {
+    "minLevel": 50,
+    "rolesNeeded": ["Tank", "Healer"]
+  },
+  "recurring": false,
+  "createdAt": "2026-06-16T12:00:00.000Z",
+  "recurrencePattern": null,
+  "recurrenceDays": []
+}
+
+### Replace guild event listing
+PUT {{baseUrl}}/guildEventListings/{{guildEventListingId}}
+Content-Type: application/json
+
+{
+  "name": "REST Event Listing Updated",
+  "description": "Updated guild event request for REST Client verification",
+  "eventDate": "2026-07-11T20:00:00.000Z",
+  "durationMinutes": 150,
+  "eventType": "Dungeon",
+  "organizer": "{{organizerId}}",
+  "guild_id": "{{guildId}}",
+  "attendees": ["{{organizerId}}"],
+  "requirements": {
+    "minChampionPoints": 300
+  },
+  "recurring": true,
+  "createdAt": "2026-06-16T12:00:00.000Z",
+  "recurrencePattern": "weekly",
+  "recurrenceDays": ["Thursday"]
+}
+
+### Update guild event listing
+PATCH {{baseUrl}}/guildEventListings/{{guildEventListingId}}
+Content-Type: application/json
+
+{
+  "description": "Patched guild event listing",
+  "durationMinutes": 180
+}
+
+### Reject invalid organizer
+POST {{baseUrl}}/guildEventListings
+Content-Type: application/json
+
+{
+  "name": "REST Invalid Event Listing",
+  "description": "Should fail when organizer does not exist",
+  "eventDate": "2026-07-12T20:00:00.000Z",
+  "durationMinutes": 60,
+  "eventType": "PvP",
+  "organizer": "507f1f77bcf86cd799439011",
+  "guild_id": "{{guildId}}",
+  "attendees": [],
+  "requirements": {},
+  "recurring": false,
+  "createdAt": "2026-06-16T12:00:00.000Z",
+  "recurrenceDays": []
+}
+
+### Delete guild event listing
+DELETE {{baseUrl}}/guildEventListings/{{guildEventListingId}}
