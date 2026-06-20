@@ -5,7 +5,7 @@
         "description": "This API provides endpoints to manage guilds and players in the Elder Scrolls Online (ESO) game. It allows users to create, read, update, and delete guilds and players, as well as manage player memberships in guilds.",
         "version": "1.0.0"
     },
-    "host": "localhost:3000",
+    "host": "cse341-project3-lh49.onrender.com",
     "basePath": "/",
     "tags": [
         {
@@ -25,7 +25,7 @@
             "description": "Guild store listing management endpoints. Allows creating, updating, and managing items for sale in guild stores. Write requests validate that ownerPlayer_id references an existing player and that sellerGuild_id references an existing guild."
         }
     ],
-    "schemes": ["http"],
+    "schemes": ["https"],
     "paths": {
         "/register": {
             "post": {

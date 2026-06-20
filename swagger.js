@@ -30,10 +30,8 @@ const doc = {
                 "Guild store listing management endpoints. Allows creating, updating, and managing items for sale in guild stores. Write requests validate that ownerPlayer_id references an existing player and that sellerGuild_id references an existing guild.",
         },
     ],
-    // host: "cse341-project3-lh49.onrender.com",
-    // schemes: ["https"],
-    host: "localhost:3000",
-    schemes: ["http"],
+    host: "cse341-project3-lh49.onrender.com",
+    schemes: ["https"],
 };
 
 // * Specify the output file and the endpoints files
